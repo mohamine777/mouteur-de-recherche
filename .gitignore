@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Python environments
+venv/
+.venv/
+
+# Build output
+.next/
+dist/
+build/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

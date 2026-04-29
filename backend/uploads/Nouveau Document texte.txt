@@ -1,0 +1,9 @@
+Machine learning systems learn patterns from large datasets.
+
+Deep learning models use neural networks with multiple layers.
+
+Artificial intelligence applications include recommendation systems, semantic search, and prediction models.
+
+Vector space representations measure similarity between documents and queries.
+
+Cosine similarity is widely used in information retrieval for ranking documents by semantic relevance.
