@@ -47,3 +47,4 @@ A full Information Retrieval system with:
 - Uploaded files are saved in `backend/uploads`.
 - Supported file types: `.pdf`, `.docx`, `.xlsx`, `.csv`, `.txt`.
 - The backend keeps index and model state in memory.
+
