@@ -1,0 +1,2325 @@
+{
+  "preprocessor_version": "ri-preprocess-v5",
+  "documents": {
+    "59e96755-e37e-46c0-ab2d-607ac62c4ae8": {
+      "doc_id": "59e96755-e37e-46c0-ab2d-607ac62c4ae8",
+      "title": "Doc1",
+      "text": "Artificial Intelligence has become one of the most transformative technologies of the modern era. Over the last decade, researchers and engineers have developed systems capable of learning from large amounts of data, recognizing patterns, and making decisions with increasing levels of accuracy. Machine learning, a branch of artificial intelligence, focuses on algorithms that improve automatically through experience. Deep learning, a specialized form of machine learning, uses multi-layered neural networks to process information in ways inspired by the human brain.\n\nIn the healthcare sector, artificial intelligence is being used to analyze medical images, detect diseases earlier, and personalize treatment plans for patients. Hospitals increasingly rely on intelligent systems to optimize scheduling, improve diagnostics, and assist doctors in making evidence-based decisions. Predictive analytics powered by machine learning can identify potential health risks before symptoms become severe, allowing preventive care to become more efficient.\n\nThe transportation industry has also experienced rapid innovation because of intelligent systems. Autonomous vehicles use computer vision, sensors, and advanced algorithms to understand their surroundings and make driving decisions in real time. These systems process vast streams of data continuously, recognizing pedestrians, reading road signs, and predicting the behavior of nearby vehicles. The integration of artificial intelligence into transportation promises safer roads, reduced traffic congestion, and more efficient mobility.\n\nInformation Retrieval is another domain deeply influenced by artificial intelligence. Modern search engines no longer depend only on exact keyword matching. Instead, they use semantic analysis, ranking algorithms, and probabilistic models to understand user intent and deliver more relevant results. Techniques such as TF-IDF weighting, vector space modeling, inverted indexing, and probabilistic ranking remain foundational, while neural ranking models are increasingly used in advanced systems.\n\nCybersecurity has also become more dependent on intelligent technologies. Security systems monitor network traffic, detect anomalies, and automatically respond to suspicious activity. Artificial intelligence can identify malware patterns faster than traditional systems and adapt to evolving threats. Machine learning models are now used in fraud detection, spam filtering, identity verification, and predictive security analytics.\n\nDespite its advantages, artificial intelligence raises ethical concerns. Privacy, algorithmic bias, transparency, and accountability remain major issues. Organizations deploying intelligent systems must ensure fairness, explainability, and responsible use of data. As governments create regulations and industries adopt standards, the future of artificial intelligence will depend not only on technical progress but also on social responsibility and human oversight.\n",
+      "metadata": {
+        "title": "Doc1",
+        "path": "C:\\My Works\\ir_system_project\\backend\\uploads\\doc1.txt",
+        "filename": "doc1.txt",
+        "date": "2026-05-01T21:21:22",
+        "extension": ".txt"
+      },
+      "tokens": [
+        "artifici",
+        "intelligence",
+        "become",
+        "one",
+        "most",
+        "transformative",
+        "technologi",
+        "modern",
+        "era",
+        "over",
+        "last",
+        "decade",
+        "researcher",
+        "engineer",
+        "develop",
+        "system",
+        "capable",
+        "learn",
+        "large",
+        "amount",
+        "data",
+        "recogniz",
+        "pattern",
+        "making",
+        "decision",
+        "increas",
+        "level",
+        "accuracy",
+        "machine",
+        "learn",
+        "branch",
+        "artifici",
+        "intelligence",
+        "focus",
+        "algorithm",
+        "improve",
+        "automatically",
+        "through",
+        "experience",
+        "deep",
+        "learn",
+        "specializ",
+        "form",
+        "machine",
+        "learn",
+        "uses",
+        "multi",
+        "layer",
+        "neur",
+        "network",
+        "proces",
+        "inform",
+        "ways",
+        "inspir",
+        "human",
+        "brain",
+        "healthcare",
+        "sector",
+        "artifici",
+        "intelligence",
+        "being",
+        "used",
+        "analyze",
+        "medic",
+        "imag",
+        "detect",
+        "diseas",
+        "earlier",
+        "personalize",
+        "treat",
+        "plan",
+        "patient",
+        "hospital",
+        "increasingly",
+        "rely",
+        "intelligent",
+        "system",
+        "optimize",
+        "schedul",
+        "improve",
+        "diagnostic",
+        "assist",
+        "doctor",
+        "making",
+        "evidence",
+        "based",
+        "decision",
+        "predictive",
+        "analytic",
+        "power",
+        "machine",
+        "learn",
+        "can",
+        "identify",
+        "potenti",
+        "health",
+        "risk",
+        "before",
+        "symptom",
+        "become",
+        "severe",
+        "allow",
+        "preventive",
+        "care",
+        "become",
+        "more",
+        "efficient",
+        "transport",
+        "industry",
+        "also",
+        "experienc",
+        "rapid",
+        "innov",
+        "because",
+        "intelligent",
+        "system",
+        "autonomou",
+        "vehicl",
+        "use",
+        "computer",
+        "vision",
+        "sensor",
+        "advanc",
+        "algorithm",
+        "understand",
+        "their",
+        "surrounding",
+        "make",
+        "driv",
+        "decision",
+        "real",
+        "time",
+        "these",
+        "system",
+        "proces",
+        "vast",
+        "stream",
+        "data",
+        "continuously",
+        "recogniz",
+        "pedestrian",
+        "read",
+        "road",
+        "sign",
+        "predict",
+        "behavior",
+        "nearby",
+        "vehicl",
+        "integr",
+        "artifici",
+        "intelligence",
+        "into",
+        "transport",
+        "promis",
+        "safer",
+        "road",
+        "reduc",
+        "traffic",
+        "congestion",
+        "more",
+        "efficient",
+        "mobility",
+        "inform",
+        "retriev",
+        "another",
+        "domain",
+        "deeply",
+        "influenc",
+        "artifici",
+        "intelligence",
+        "modern",
+        "search",
+        "engin",
+        "no",
+        "longer",
+        "depend",
+        "only",
+        "exact",
+        "keyword",
+        "match",
+        "instead",
+        "they",
+        "use",
+        "semantic",
+        "analysi",
+        "rank",
+        "algorithm",
+        "probabilistic",
+        "model",
+        "understand",
+        "user",
+        "intent",
+        "deliver",
+        "more",
+        "relevant",
+        "result",
+        "techn",
+        "such",
+        "tf",
+        "idf",
+        "weight",
+        "vector",
+        "space",
+        "model",
+        "invert",
+        "index",
+        "probabilistic",
+        "rank",
+        "remain",
+        "foundation",
+        "while",
+        "neur",
+        "rank",
+        "model",
+        "increasingly",
+        "used",
+        "advanc",
+        "system",
+        "cybersecurity",
+        "also",
+        "become",
+        "more",
+        "dependent",
+        "intelligent",
+        "technologi",
+        "security",
+        "system",
+        "monitor",
+        "network",
+        "traffic",
+        "detect",
+        "anomali",
+        "automatically",
+        "respond",
+        "suspiciou",
+        "activity",
+        "artifici",
+        "intelligence",
+        "can",
+        "identify",
+        "malware",
+        "pattern",
+        "faster",
+        "than",
+        "tradition",
+        "system",
+        "adapt",
+        "evolv",
+        "threat",
+        "machine",
+        "learn",
+        "model",
+        "now",
+        "used",
+        "fraud",
+        "detection",
+        "spam",
+        "filter",
+        "identity",
+        "verific",
+        "predictive",
+        "security",
+        "analytic",
+        "despite",
+        "advantag",
+        "artifici",
+        "intelligence",
+        "rais",
+        "ethic",
+        "concern",
+        "privacy",
+        "algorithmic",
+        "bias",
+        "transparency",
+        "accountability",
+        "remain",
+        "major",
+        "issu",
+        "organiz",
+        "deploy",
+        "intelligent",
+        "system",
+        "must",
+        "ensure",
+        "fairnes",
+        "explainability",
+        "responsible",
+        "use",
+        "data",
+        "government",
+        "create",
+        "regul",
+        "industri",
+        "adopt",
+        "standard",
+        "future",
+        "artifici",
+        "intelligence",
+        "will",
+        "depend",
+        "only",
+        "technic",
+        "progres",
+        "but",
+        "also",
+        "soci",
+        "responsibility",
+        "human",
+        "oversight"
+      ]
+    },
+    "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": {
+      "doc_id": "8ef5010b-d6af-4ac7-941f-34e5edd6d07d",
+      "title": "Doc2",
+      "text": "Information Retrieval is the science of obtaining relevant information from large collections of documents. It is a critical component of digital libraries, enterprise knowledge bases, recommendation systems, and web search engines. The goal of an information retrieval system is not simply to find matching documents, but to rank documents according to their estimated relevance to a user’s query.\n\nOne of the earliest retrieval models is the Boolean Retrieval Model. In this approach, documents are represented as sets of terms, and queries are expressed using logical operators such as AND, OR, and NOT. Boolean retrieval is simple, fast, and interpretable, but it has limitations because documents are either relevant or irrelevant, with no ranking between them.\n\nThe Vector Space Model introduced a more flexible approach by representing documents and queries as vectors in a mathematical space. Each term is assigned a weight, often computed using Term Frequency and Inverse Document Frequency, commonly known as TF-IDF. Similarity between a document and a query is calculated using cosine similarity, allowing systems to rank documents by closeness instead of exact logical matching.\n\nProbabilistic Retrieval Models estimate the probability that a document is relevant to a query. These models use statistical reasoning and document evidence to compute ranking scores. Binary Independence Retrieval assumes independence between terms and estimates relevance probabilities using occurrence statistics. Probabilistic ranking has become highly influential in modern search systems because it captures uncertainty better than rigid logical matching.\n\nFuzzy Retrieval extends classical retrieval by handling partial truth and approximate matching. Instead of binary relevance, fuzzy logic allows degrees of relevance between zero and one. This is useful when user queries are vague, misspelled, or semantically approximate. Fuzzy retrieval models improve tolerance to ambiguity and increase robustness in real-world systems.\n\nModern retrieval systems combine indexing, tokenization, stop-word removal, stemming, ranking functions, and machine learning models. They often use inverted indexes for fast lookup, semantic embeddings for understanding meaning, and feedback mechanisms to improve search quality over time. As data continues to grow exponentially, efficient and intelligent retrieval remains a cornerstone of information access in the digital age.\n",
+      "metadata": {
+        "title": "Doc2",
+        "path": "C:\\My Works\\ir_system_project\\backend\\uploads\\doc2.txt",
+        "filename": "doc2.txt",
+        "date": "2026-05-01T21:21:22",
+        "extension": ".txt"
+      },
+      "tokens": [
+        "inform",
+        "retriev",
+        "science",
+        "obtain",
+        "relevant",
+        "inform",
+        "large",
+        "collection",
+        "document",
+        "critic",
+        "component",
+        "digit",
+        "librari",
+        "enterprise",
+        "knowledge",
+        "base",
+        "recommend",
+        "system",
+        "web",
+        "search",
+        "engin",
+        "goal",
+        "inform",
+        "retriev",
+        "system",
+        "simply",
+        "find",
+        "match",
+        "document",
+        "but",
+        "rank",
+        "document",
+        "accord",
+        "their",
+        "estimat",
+        "relevance",
+        "user",
+        "query",
+        "one",
+        "earliest",
+        "retriev",
+        "model",
+        "boolean",
+        "retriev",
+        "model",
+        "approach",
+        "document",
+        "represent",
+        "sets",
+        "term",
+        "queri",
+        "express",
+        "using",
+        "logic",
+        "operator",
+        "such",
+        "boolean",
+        "retriev",
+        "simple",
+        "fast",
+        "interpretable",
+        "but",
+        "limit",
+        "because",
+        "document",
+        "either",
+        "relevant",
+        "irrelevant",
+        "no",
+        "rank",
+        "between",
+        "them",
+        "vector",
+        "space",
+        "model",
+        "introduc",
+        "more",
+        "flexible",
+        "approach",
+        "represent",
+        "document",
+        "queri",
+        "vector",
+        "mathematic",
+        "space",
+        "each",
+        "term",
+        "assign",
+        "weight",
+        "often",
+        "comput",
+        "using",
+        "term",
+        "frequency",
+        "inverse",
+        "docu",
+        "frequency",
+        "commonly",
+        "known",
+        "tf",
+        "idf",
+        "similarity",
+        "between",
+        "docu",
+        "query",
+        "calculat",
+        "using",
+        "cosine",
+        "similarity",
+        "allow",
+        "system",
+        "rank",
+        "document",
+        "closenes",
+        "instead",
+        "exact",
+        "logic",
+        "match",
+        "probabilistic",
+        "retriev",
+        "model",
+        "estimate",
+        "probability",
+        "docu",
+        "relevant",
+        "query",
+        "these",
+        "model",
+        "use",
+        "statistic",
+        "reason",
+        "docu",
+        "evidence",
+        "compute",
+        "rank",
+        "scor",
+        "binary",
+        "independence",
+        "retriev",
+        "assum",
+        "independence",
+        "between",
+        "term",
+        "estimat",
+        "relevance",
+        "probabiliti",
+        "using",
+        "occurrence",
+        "statistic",
+        "probabilistic",
+        "rank",
+        "become",
+        "highly",
+        "influenti",
+        "modern",
+        "search",
+        "system",
+        "because",
+        "captur",
+        "uncertainty",
+        "better",
+        "than",
+        "rigid",
+        "logic",
+        "match",
+        "fuzzy",
+        "retriev",
+        "extend",
+        "classic",
+        "retriev",
+        "handl",
+        "parti",
+        "truth",
+        "approximate",
+        "match",
+        "instead",
+        "binary",
+        "relevance",
+        "fuzzy",
+        "logic",
+        "allow",
+        "degre",
+        "relevance",
+        "between",
+        "zero",
+        "one",
+        "useful",
+        "when",
+        "user",
+        "queri",
+        "vague",
+        "misspell",
+        "semantically",
+        "approximate",
+        "fuzzy",
+        "retriev",
+        "model",
+        "improve",
+        "tolerance",
+        "ambiguity",
+        "increase",
+        "robustnes",
+        "real",
+        "world",
+        "system",
+        "modern",
+        "retriev",
+        "system",
+        "combine",
+        "index",
+        "tokeniz",
+        "stop",
+        "word",
+        "remov",
+        "stemm",
+        "rank",
+        "function",
+        "machine",
+        "learn",
+        "model",
+        "they",
+        "often",
+        "use",
+        "invert",
+        "index",
+        "fast",
+        "lookup",
+        "semantic",
+        "embedding",
+        "understand",
+        "mean",
+        "feedback",
+        "mechanism",
+        "improve",
+        "search",
+        "quality",
+        "over",
+        "time",
+        "data",
+        "continu",
+        "grow",
+        "exponentially",
+        "efficient",
+        "intelligent",
+        "retriev",
+        "remain",
+        "cornerstone",
+        "inform",
+        "acces",
+        "digit",
+        "age"
+      ]
+    }
+  },
+  "inverted_index": {
+    "artifici": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 8
+    },
+    "intelligence": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 8
+    },
+    "become": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 4,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "one": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "most": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "transformative": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "technologi": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "modern": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "era": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "over": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "last": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "decade": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "researcher": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "engineer": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "develop": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "system": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 8,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 6
+    },
+    "capable": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "learn": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 6,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "large": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "amount": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "data": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "recogniz": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "pattern": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "making": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "decision": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3
+    },
+    "increas": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "level": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "accuracy": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "machine": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 4,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "branch": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "focus": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "algorithm": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3
+    },
+    "improve": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "automatically": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "through": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "experience": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "deep": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "specializ": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "form": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "uses": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "multi": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "layer": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "neur": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "network": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "proces": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "inform": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "ways": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "inspir": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "human": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "brain": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "healthcare": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "sector": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "being": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "used": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3
+    },
+    "analyze": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "medic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "imag": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "detect": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "diseas": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "earlier": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "personalize": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "treat": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "plan": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "patient": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "hospital": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "increasingly": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "rely": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "intelligent": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 4,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "optimize": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "schedul": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "diagnostic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "assist": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "doctor": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "evidence": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "based": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "predictive": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "analytic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "power": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "can": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "identify": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "potenti": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "health": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "risk": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "before": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "symptom": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "severe": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "allow": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "preventive": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "care": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "more": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 4,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "efficient": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "transport": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "industry": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "also": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3
+    },
+    "experienc": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "rapid": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "innov": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "because": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "autonomou": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "vehicl": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "use": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "computer": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "vision": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "sensor": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "advanc": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "understand": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "their": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "surrounding": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "make": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "driv": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "real": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "time": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "these": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "vast": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "stream": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "continuously": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "pedestrian": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "read": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "road": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "sign": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "predict": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "behavior": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "nearby": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "integr": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "into": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "promis": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "safer": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "reduc": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "traffic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "congestion": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "mobility": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "retriev": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 12
+    },
+    "another": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "domain": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "deeply": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "influenc": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "search": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 3
+    },
+    "engin": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "no": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "longer": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "depend": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "only": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "exact": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "keyword": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "match": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "instead": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "they": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "semantic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "analysi": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "rank": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 3,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 6
+    },
+    "probabilistic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "model": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 4,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 7
+    },
+    "user": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "intent": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "deliver": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "relevant": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 3
+    },
+    "result": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "techn": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "such": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "tf": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "idf": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "weight": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "vector": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "space": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "invert": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "index": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "remain": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "foundation": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "while": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "cybersecurity": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "dependent": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "security": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 2
+    },
+    "monitor": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "anomali": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "respond": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "suspiciou": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "activity": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "malware": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "faster": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "than": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "tradition": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "adapt": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "evolv": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "threat": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "now": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "fraud": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "detection": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "spam": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "filter": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "identity": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "verific": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "despite": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "advantag": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "rais": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "ethic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "concern": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "privacy": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "algorithmic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "bias": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "transparency": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "accountability": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "major": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "issu": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "organiz": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "deploy": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "must": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "ensure": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "fairnes": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "explainability": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "responsible": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "government": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "create": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "regul": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "industri": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "adopt": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "standard": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "future": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "will": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "technic": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "progres": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "but": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1,
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "soci": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "responsibility": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "oversight": {
+      "59e96755-e37e-46c0-ab2d-607ac62c4ae8": 1
+    },
+    "science": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "obtain": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "collection": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "document": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 7
+    },
+    "critic": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "component": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "digit": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "librari": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "enterprise": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "knowledge": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "base": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "recommend": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "web": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "goal": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "simply": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "find": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "accord": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "estimat": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "relevance": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "query": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 3
+    },
+    "earliest": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "boolean": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "approach": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "represent": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "sets": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "term": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "queri": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 3
+    },
+    "express": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "using": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "logic": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "operator": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "simple": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "fast": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "interpretable": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "limit": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "either": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "irrelevant": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "between": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "them": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "introduc": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "flexible": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "mathematic": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "each": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "assign": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "often": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "comput": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "frequency": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "inverse": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "docu": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 4
+    },
+    "commonly": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "known": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "similarity": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "calculat": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "cosine": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "closenes": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "estimate": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "probability": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "statistic": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "reason": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "compute": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "scor": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "binary": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "independence": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "assum": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "probabiliti": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "occurrence": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "highly": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "influenti": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "captur": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "uncertainty": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "better": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "rigid": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "fuzzy": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 3
+    },
+    "extend": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "classic": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "handl": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "parti": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "truth": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "approximate": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 2
+    },
+    "degre": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "zero": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "useful": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "when": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "vague": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "misspell": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "semantically": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "tolerance": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "ambiguity": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "increase": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "robustnes": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "world": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "combine": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "tokeniz": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "stop": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "word": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "remov": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "stemm": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "function": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "lookup": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "embedding": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "mean": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "feedback": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "mechanism": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "quality": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "continu": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "grow": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "exponentially": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "cornerstone": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "acces": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    },
+    "age": {
+      "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": 1
+    }
+  },
+  "doc_term_freqs": {
+    "59e96755-e37e-46c0-ab2d-607ac62c4ae8": {
+      "artifici": 8,
+      "intelligence": 8,
+      "become": 4,
+      "one": 1,
+      "most": 1,
+      "transformative": 1,
+      "technologi": 2,
+      "modern": 2,
+      "era": 1,
+      "over": 1,
+      "last": 1,
+      "decade": 1,
+      "researcher": 1,
+      "engineer": 1,
+      "develop": 1,
+      "system": 8,
+      "capable": 1,
+      "learn": 6,
+      "large": 1,
+      "amount": 1,
+      "data": 3,
+      "recogniz": 2,
+      "pattern": 2,
+      "making": 2,
+      "decision": 3,
+      "increas": 1,
+      "level": 1,
+      "accuracy": 1,
+      "machine": 4,
+      "branch": 1,
+      "focus": 1,
+      "algorithm": 3,
+      "improve": 2,
+      "automatically": 2,
+      "through": 1,
+      "experience": 1,
+      "deep": 1,
+      "specializ": 1,
+      "form": 1,
+      "uses": 1,
+      "multi": 1,
+      "layer": 1,
+      "neur": 2,
+      "network": 2,
+      "proces": 2,
+      "inform": 2,
+      "ways": 1,
+      "inspir": 1,
+      "human": 2,
+      "brain": 1,
+      "healthcare": 1,
+      "sector": 1,
+      "being": 1,
+      "used": 3,
+      "analyze": 1,
+      "medic": 1,
+      "imag": 1,
+      "detect": 2,
+      "diseas": 1,
+      "earlier": 1,
+      "personalize": 1,
+      "treat": 1,
+      "plan": 1,
+      "patient": 1,
+      "hospital": 1,
+      "increasingly": 2,
+      "rely": 1,
+      "intelligent": 4,
+      "optimize": 1,
+      "schedul": 1,
+      "diagnostic": 1,
+      "assist": 1,
+      "doctor": 1,
+      "evidence": 1,
+      "based": 1,
+      "predictive": 2,
+      "analytic": 2,
+      "power": 1,
+      "can": 2,
+      "identify": 2,
+      "potenti": 1,
+      "health": 1,
+      "risk": 1,
+      "before": 1,
+      "symptom": 1,
+      "severe": 1,
+      "allow": 1,
+      "preventive": 1,
+      "care": 1,
+      "more": 4,
+      "efficient": 2,
+      "transport": 2,
+      "industry": 1,
+      "also": 3,
+      "experienc": 1,
+      "rapid": 1,
+      "innov": 1,
+      "because": 1,
+      "autonomou": 1,
+      "vehicl": 2,
+      "use": 3,
+      "computer": 1,
+      "vision": 1,
+      "sensor": 1,
+      "advanc": 2,
+      "understand": 2,
+      "their": 1,
+      "surrounding": 1,
+      "make": 1,
+      "driv": 1,
+      "real": 1,
+      "time": 1,
+      "these": 1,
+      "vast": 1,
+      "stream": 1,
+      "continuously": 1,
+      "pedestrian": 1,
+      "read": 1,
+      "road": 2,
+      "sign": 1,
+      "predict": 1,
+      "behavior": 1,
+      "nearby": 1,
+      "integr": 1,
+      "into": 1,
+      "promis": 1,
+      "safer": 1,
+      "reduc": 1,
+      "traffic": 2,
+      "congestion": 1,
+      "mobility": 1,
+      "retriev": 1,
+      "another": 1,
+      "domain": 1,
+      "deeply": 1,
+      "influenc": 1,
+      "search": 1,
+      "engin": 1,
+      "no": 1,
+      "longer": 1,
+      "depend": 2,
+      "only": 2,
+      "exact": 1,
+      "keyword": 1,
+      "match": 1,
+      "instead": 1,
+      "they": 1,
+      "semantic": 1,
+      "analysi": 1,
+      "rank": 3,
+      "probabilistic": 2,
+      "model": 4,
+      "user": 1,
+      "intent": 1,
+      "deliver": 1,
+      "relevant": 1,
+      "result": 1,
+      "techn": 1,
+      "such": 1,
+      "tf": 1,
+      "idf": 1,
+      "weight": 1,
+      "vector": 1,
+      "space": 1,
+      "invert": 1,
+      "index": 1,
+      "remain": 2,
+      "foundation": 1,
+      "while": 1,
+      "cybersecurity": 1,
+      "dependent": 1,
+      "security": 2,
+      "monitor": 1,
+      "anomali": 1,
+      "respond": 1,
+      "suspiciou": 1,
+      "activity": 1,
+      "malware": 1,
+      "faster": 1,
+      "than": 1,
+      "tradition": 1,
+      "adapt": 1,
+      "evolv": 1,
+      "threat": 1,
+      "now": 1,
+      "fraud": 1,
+      "detection": 1,
+      "spam": 1,
+      "filter": 1,
+      "identity": 1,
+      "verific": 1,
+      "despite": 1,
+      "advantag": 1,
+      "rais": 1,
+      "ethic": 1,
+      "concern": 1,
+      "privacy": 1,
+      "algorithmic": 1,
+      "bias": 1,
+      "transparency": 1,
+      "accountability": 1,
+      "major": 1,
+      "issu": 1,
+      "organiz": 1,
+      "deploy": 1,
+      "must": 1,
+      "ensure": 1,
+      "fairnes": 1,
+      "explainability": 1,
+      "responsible": 1,
+      "government": 1,
+      "create": 1,
+      "regul": 1,
+      "industri": 1,
+      "adopt": 1,
+      "standard": 1,
+      "future": 1,
+      "will": 1,
+      "technic": 1,
+      "progres": 1,
+      "but": 1,
+      "soci": 1,
+      "responsibility": 1,
+      "oversight": 1
+    },
+    "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": {
+      "inform": 4,
+      "retriev": 12,
+      "science": 1,
+      "obtain": 1,
+      "relevant": 3,
+      "large": 1,
+      "collection": 1,
+      "document": 7,
+      "critic": 1,
+      "component": 1,
+      "digit": 2,
+      "librari": 1,
+      "enterprise": 1,
+      "knowledge": 1,
+      "base": 1,
+      "recommend": 1,
+      "system": 6,
+      "web": 1,
+      "search": 3,
+      "engin": 1,
+      "goal": 1,
+      "simply": 1,
+      "find": 1,
+      "match": 4,
+      "but": 2,
+      "rank": 6,
+      "accord": 1,
+      "their": 1,
+      "estimat": 2,
+      "relevance": 4,
+      "user": 2,
+      "query": 3,
+      "one": 2,
+      "earliest": 1,
+      "model": 7,
+      "boolean": 2,
+      "approach": 2,
+      "represent": 2,
+      "sets": 1,
+      "term": 4,
+      "queri": 3,
+      "express": 1,
+      "using": 4,
+      "logic": 4,
+      "operator": 1,
+      "such": 1,
+      "simple": 1,
+      "fast": 2,
+      "interpretable": 1,
+      "limit": 1,
+      "because": 2,
+      "either": 1,
+      "irrelevant": 1,
+      "no": 1,
+      "between": 4,
+      "them": 1,
+      "vector": 2,
+      "space": 2,
+      "introduc": 1,
+      "more": 1,
+      "flexible": 1,
+      "mathematic": 1,
+      "each": 1,
+      "assign": 1,
+      "weight": 1,
+      "often": 2,
+      "comput": 1,
+      "frequency": 2,
+      "inverse": 1,
+      "docu": 4,
+      "commonly": 1,
+      "known": 1,
+      "tf": 1,
+      "idf": 1,
+      "similarity": 2,
+      "calculat": 1,
+      "cosine": 1,
+      "allow": 2,
+      "closenes": 1,
+      "instead": 2,
+      "exact": 1,
+      "probabilistic": 2,
+      "estimate": 1,
+      "probability": 1,
+      "these": 1,
+      "use": 2,
+      "statistic": 2,
+      "reason": 1,
+      "evidence": 1,
+      "compute": 1,
+      "scor": 1,
+      "binary": 2,
+      "independence": 2,
+      "assum": 1,
+      "probabiliti": 1,
+      "occurrence": 1,
+      "become": 1,
+      "highly": 1,
+      "influenti": 1,
+      "modern": 2,
+      "captur": 1,
+      "uncertainty": 1,
+      "better": 1,
+      "than": 1,
+      "rigid": 1,
+      "fuzzy": 3,
+      "extend": 1,
+      "classic": 1,
+      "handl": 1,
+      "parti": 1,
+      "truth": 1,
+      "approximate": 2,
+      "degre": 1,
+      "zero": 1,
+      "useful": 1,
+      "when": 1,
+      "vague": 1,
+      "misspell": 1,
+      "semantically": 1,
+      "improve": 2,
+      "tolerance": 1,
+      "ambiguity": 1,
+      "increase": 1,
+      "robustnes": 1,
+      "real": 1,
+      "world": 1,
+      "combine": 1,
+      "index": 2,
+      "tokeniz": 1,
+      "stop": 1,
+      "word": 1,
+      "remov": 1,
+      "stemm": 1,
+      "function": 1,
+      "machine": 1,
+      "learn": 1,
+      "they": 1,
+      "invert": 1,
+      "lookup": 1,
+      "semantic": 1,
+      "embedding": 1,
+      "understand": 1,
+      "mean": 1,
+      "feedback": 1,
+      "mechanism": 1,
+      "quality": 1,
+      "over": 1,
+      "time": 1,
+      "data": 1,
+      "continu": 1,
+      "grow": 1,
+      "exponentially": 1,
+      "efficient": 1,
+      "intelligent": 1,
+      "remain": 1,
+      "cornerstone": 1,
+      "acces": 1,
+      "age": 1
+    }
+  },
+  "tfidf_matrix": {
+    "59e96755-e37e-46c0-ab2d-607ac62c4ae8": {
+      "artifici": 0.6931471805599453,
+      "intelligence": 0.6931471805599453,
+      "most": 0.08664339756999316,
+      "transformative": 0.08664339756999316,
+      "technologi": 0.17328679513998632,
+      "era": 0.08664339756999316,
+      "last": 0.08664339756999316,
+      "decade": 0.08664339756999316,
+      "researcher": 0.08664339756999316,
+      "engineer": 0.08664339756999316,
+      "develop": 0.08664339756999316,
+      "capable": 0.08664339756999316,
+      "amount": 0.08664339756999316,
+      "recogniz": 0.17328679513998632,
+      "pattern": 0.17328679513998632,
+      "making": 0.17328679513998632,
+      "decision": 0.25993019270997947,
+      "increas": 0.08664339756999316,
+      "level": 0.08664339756999316,
+      "accuracy": 0.08664339756999316,
+      "branch": 0.08664339756999316,
+      "focus": 0.08664339756999316,
+      "algorithm": 0.25993019270997947,
+      "automatically": 0.17328679513998632,
+      "through": 0.08664339756999316,
+      "experience": 0.08664339756999316,
+      "deep": 0.08664339756999316,
+      "specializ": 0.08664339756999316,
+      "form": 0.08664339756999316,
+      "uses": 0.08664339756999316,
+      "multi": 0.08664339756999316,
+      "layer": 0.08664339756999316,
+      "neur": 0.17328679513998632,
+      "network": 0.17328679513998632,
+      "proces": 0.17328679513998632,
+      "ways": 0.08664339756999316,
+      "inspir": 0.08664339756999316,
+      "human": 0.17328679513998632,
+      "brain": 0.08664339756999316,
+      "healthcare": 0.08664339756999316,
+      "sector": 0.08664339756999316,
+      "being": 0.08664339756999316,
+      "used": 0.25993019270997947,
+      "analyze": 0.08664339756999316,
+      "medic": 0.08664339756999316,
+      "imag": 0.08664339756999316,
+      "detect": 0.17328679513998632,
+      "diseas": 0.08664339756999316,
+      "earlier": 0.08664339756999316,
+      "personalize": 0.08664339756999316,
+      "treat": 0.08664339756999316,
+      "plan": 0.08664339756999316,
+      "patient": 0.08664339756999316,
+      "hospital": 0.08664339756999316,
+      "increasingly": 0.17328679513998632,
+      "rely": 0.08664339756999316,
+      "optimize": 0.08664339756999316,
+      "schedul": 0.08664339756999316,
+      "diagnostic": 0.08664339756999316,
+      "assist": 0.08664339756999316,
+      "doctor": 0.08664339756999316,
+      "based": 0.08664339756999316,
+      "predictive": 0.17328679513998632,
+      "analytic": 0.17328679513998632,
+      "power": 0.08664339756999316,
+      "can": 0.17328679513998632,
+      "identify": 0.17328679513998632,
+      "potenti": 0.08664339756999316,
+      "health": 0.08664339756999316,
+      "risk": 0.08664339756999316,
+      "before": 0.08664339756999316,
+      "symptom": 0.08664339756999316,
+      "severe": 0.08664339756999316,
+      "preventive": 0.08664339756999316,
+      "care": 0.08664339756999316,
+      "transport": 0.17328679513998632,
+      "industry": 0.08664339756999316,
+      "also": 0.25993019270997947,
+      "experienc": 0.08664339756999316,
+      "rapid": 0.08664339756999316,
+      "innov": 0.08664339756999316,
+      "autonomou": 0.08664339756999316,
+      "vehicl": 0.17328679513998632,
+      "computer": 0.08664339756999316,
+      "vision": 0.08664339756999316,
+      "sensor": 0.08664339756999316,
+      "advanc": 0.17328679513998632,
+      "surrounding": 0.08664339756999316,
+      "make": 0.08664339756999316,
+      "driv": 0.08664339756999316,
+      "vast": 0.08664339756999316,
+      "stream": 0.08664339756999316,
+      "continuously": 0.08664339756999316,
+      "pedestrian": 0.08664339756999316,
+      "read": 0.08664339756999316,
+      "road": 0.17328679513998632,
+      "sign": 0.08664339756999316,
+      "predict": 0.08664339756999316,
+      "behavior": 0.08664339756999316,
+      "nearby": 0.08664339756999316,
+      "integr": 0.08664339756999316,
+      "into": 0.08664339756999316,
+      "promis": 0.08664339756999316,
+      "safer": 0.08664339756999316,
+      "reduc": 0.08664339756999316,
+      "traffic": 0.17328679513998632,
+      "congestion": 0.08664339756999316,
+      "mobility": 0.08664339756999316,
+      "another": 0.08664339756999316,
+      "domain": 0.08664339756999316,
+      "deeply": 0.08664339756999316,
+      "influenc": 0.08664339756999316,
+      "longer": 0.08664339756999316,
+      "depend": 0.17328679513998632,
+      "only": 0.17328679513998632,
+      "keyword": 0.08664339756999316,
+      "analysi": 0.08664339756999316,
+      "intent": 0.08664339756999316,
+      "deliver": 0.08664339756999316,
+      "result": 0.08664339756999316,
+      "techn": 0.08664339756999316,
+      "foundation": 0.08664339756999316,
+      "while": 0.08664339756999316,
+      "cybersecurity": 0.08664339756999316,
+      "dependent": 0.08664339756999316,
+      "security": 0.17328679513998632,
+      "monitor": 0.08664339756999316,
+      "anomali": 0.08664339756999316,
+      "respond": 0.08664339756999316,
+      "suspiciou": 0.08664339756999316,
+      "activity": 0.08664339756999316,
+      "malware": 0.08664339756999316,
+      "faster": 0.08664339756999316,
+      "tradition": 0.08664339756999316,
+      "adapt": 0.08664339756999316,
+      "evolv": 0.08664339756999316,
+      "threat": 0.08664339756999316,
+      "now": 0.08664339756999316,
+      "fraud": 0.08664339756999316,
+      "detection": 0.08664339756999316,
+      "spam": 0.08664339756999316,
+      "filter": 0.08664339756999316,
+      "identity": 0.08664339756999316,
+      "verific": 0.08664339756999316,
+      "despite": 0.08664339756999316,
+      "advantag": 0.08664339756999316,
+      "rais": 0.08664339756999316,
+      "ethic": 0.08664339756999316,
+      "concern": 0.08664339756999316,
+      "privacy": 0.08664339756999316,
+      "algorithmic": 0.08664339756999316,
+      "bias": 0.08664339756999316,
+      "transparency": 0.08664339756999316,
+      "accountability": 0.08664339756999316,
+      "major": 0.08664339756999316,
+      "issu": 0.08664339756999316,
+      "organiz": 0.08664339756999316,
+      "deploy": 0.08664339756999316,
+      "must": 0.08664339756999316,
+      "ensure": 0.08664339756999316,
+      "fairnes": 0.08664339756999316,
+      "explainability": 0.08664339756999316,
+      "responsible": 0.08664339756999316,
+      "government": 0.08664339756999316,
+      "create": 0.08664339756999316,
+      "regul": 0.08664339756999316,
+      "industri": 0.08664339756999316,
+      "adopt": 0.08664339756999316,
+      "standard": 0.08664339756999316,
+      "future": 0.08664339756999316,
+      "will": 0.08664339756999316,
+      "technic": 0.08664339756999316,
+      "progres": 0.08664339756999316,
+      "soci": 0.08664339756999316,
+      "responsibility": 0.08664339756999316,
+      "oversight": 0.08664339756999316
+    },
+    "8ef5010b-d6af-4ac7-941f-34e5edd6d07d": {
+      "science": 0.057762265046662105,
+      "obtain": 0.057762265046662105,
+      "collection": 0.057762265046662105,
+      "document": 0.4043358553266348,
+      "critic": 0.057762265046662105,
+      "component": 0.057762265046662105,
+      "digit": 0.11552453009332421,
+      "librari": 0.057762265046662105,
+      "enterprise": 0.057762265046662105,
+      "knowledge": 0.057762265046662105,
+      "base": 0.057762265046662105,
+      "recommend": 0.057762265046662105,
+      "web": 0.057762265046662105,
+      "goal": 0.057762265046662105,
+      "simply": 0.057762265046662105,
+      "find": 0.057762265046662105,
+      "accord": 0.057762265046662105,
+      "estimat": 0.11552453009332421,
+      "relevance": 0.23104906018664842,
+      "query": 0.17328679513998632,
+      "earliest": 0.057762265046662105,
+      "boolean": 0.11552453009332421,
+      "approach": 0.11552453009332421,
+      "represent": 0.11552453009332421,
+      "sets": 0.057762265046662105,
+      "term": 0.23104906018664842,
+      "queri": 0.17328679513998632,
+      "express": 0.057762265046662105,
+      "using": 0.23104906018664842,
+      "logic": 0.23104906018664842,
+      "operator": 0.057762265046662105,
+      "simple": 0.057762265046662105,
+      "fast": 0.11552453009332421,
+      "interpretable": 0.057762265046662105,
+      "limit": 0.057762265046662105,
+      "either": 0.057762265046662105,
+      "irrelevant": 0.057762265046662105,
+      "between": 0.23104906018664842,
+      "them": 0.057762265046662105,
+      "introduc": 0.057762265046662105,
+      "flexible": 0.057762265046662105,
+      "mathematic": 0.057762265046662105,
+      "each": 0.057762265046662105,
+      "assign": 0.057762265046662105,
+      "often": 0.11552453009332421,
+      "comput": 0.057762265046662105,
+      "frequency": 0.11552453009332421,
+      "inverse": 0.057762265046662105,
+      "docu": 0.23104906018664842,
+      "commonly": 0.057762265046662105,
+      "known": 0.057762265046662105,
+      "similarity": 0.11552453009332421,
+      "calculat": 0.057762265046662105,
+      "cosine": 0.057762265046662105,
+      "closenes": 0.057762265046662105,
+      "estimate": 0.057762265046662105,
+      "probability": 0.057762265046662105,
+      "statistic": 0.11552453009332421,
+      "reason": 0.057762265046662105,
+      "compute": 0.057762265046662105,
+      "scor": 0.057762265046662105,
+      "binary": 0.11552453009332421,
+      "independence": 0.11552453009332421,
+      "assum": 0.057762265046662105,
+      "probabiliti": 0.057762265046662105,
+      "occurrence": 0.057762265046662105,
+      "highly": 0.057762265046662105,
+      "influenti": 0.057762265046662105,
+      "captur": 0.057762265046662105,
+      "uncertainty": 0.057762265046662105,
+      "better": 0.057762265046662105,
+      "rigid": 0.057762265046662105,
+      "fuzzy": 0.17328679513998632,
+      "extend": 0.057762265046662105,
+      "classic": 0.057762265046662105,
+      "handl": 0.057762265046662105,
+      "parti": 0.057762265046662105,
+      "truth": 0.057762265046662105,
+      "approximate": 0.11552453009332421,
+      "degre": 0.057762265046662105,
+      "zero": 0.057762265046662105,
+      "useful": 0.057762265046662105,
+      "when": 0.057762265046662105,
+      "vague": 0.057762265046662105,
+      "misspell": 0.057762265046662105,
+      "semantically": 0.057762265046662105,
+      "tolerance": 0.057762265046662105,
+      "ambiguity": 0.057762265046662105,
+      "increase": 0.057762265046662105,
+      "robustnes": 0.057762265046662105,
+      "world": 0.057762265046662105,
+      "combine": 0.057762265046662105,
+      "tokeniz": 0.057762265046662105,
+      "stop": 0.057762265046662105,
+      "word": 0.057762265046662105,
+      "remov": 0.057762265046662105,
+      "stemm": 0.057762265046662105,
+      "function": 0.057762265046662105,
+      "lookup": 0.057762265046662105,
+      "embedding": 0.057762265046662105,
+      "mean": 0.057762265046662105,
+      "feedback": 0.057762265046662105,
+      "mechanism": 0.057762265046662105,
+      "quality": 0.057762265046662105,
+      "continu": 0.057762265046662105,
+      "grow": 0.057762265046662105,
+      "exponentially": 0.057762265046662105,
+      "cornerstone": 0.057762265046662105,
+      "acces": 0.057762265046662105,
+      "age": 0.057762265046662105
+    }
+  }
+}

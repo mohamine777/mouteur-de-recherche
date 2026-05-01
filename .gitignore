@@ -22,3 +22,9 @@ __pycache__/
 # OS/editor noise
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Python cache (catch any nested cache dirs)
+**/__pycache__/

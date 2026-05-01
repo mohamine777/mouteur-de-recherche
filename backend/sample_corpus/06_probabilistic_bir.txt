@@ -1,0 +1,1 @@
+The Binary Independence Retrieval model estimates relevance probability from binary term presence. Robertson and Jones proposed probabilistic weights based on relevant and non-relevant document populations.

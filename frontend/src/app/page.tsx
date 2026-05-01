@@ -1,421 +1,254 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-import MetricsCard from "@/components/MetricsCard";
-import ResultsPanel from "@/components/ResultsPanel";
+import LogicalOperatorSelector from "@/components/LogicalOperatorSelector";
+import MeasureSelector from "@/components/MeasureSelector";
+import ModelSelector from "@/components/ModelSelector";
+import PValueSlider from "@/components/PValueSlider";
 import SearchBar from "@/components/SearchBar";
-import {
-  compareDocuments,
-  fetchMetrics,
-  type LogicalOperator,
-  searchDocuments,
-  type SearchMeasure,
-  type SearchModel,
-  type SearchResult,
-  uploadDocument,
-} from "@/lib/api";
+import type { LogicalOperator, SearchModel, VsmMeasure } from "@/lib/api";
 
-const keywords = [
-  "profession",
-  "score",
-  "nan",
-  "madrid",
-  "amina",
-  "name",
-  "fast",
-  "ballon",
-  "run",
-  "product",
-  "cat",
-  "cristiano",
-  "saw",
-  "youssef",
-  "attac",
-];
+type Draft = {
+  query: string;
+  model: SearchModel;
+  measure: VsmMeasure;
+  operator: LogicalOperator;
+  p: number;
+};
 
-const MODEL_OPTIONS: Array<{ value: SearchModel; label: string }> = [
-  { value: "boolean_exact", label: "Boolean Exact" },
-  { value: "extended_boolean", label: "Extended Boolean" },
-  { value: "fuzzy_zadeh", label: "Fuzzy Zadeh" },
-  { value: "fuzzy_lukasiewicz", label: "Fuzzy Lukasiewicz" },
-  { value: "vsm", label: "Vector Space Model" },
-];
+const DEFAULT_DRAFT: Draft = {
+  query: "",
+  model: "vsm",
+  measure: "cosine",
+  operator: "or",
+  p: 2,
+};
 
-const OPERATOR_OPTIONS: Array<{ value: LogicalOperator; label: string }> = [
-  { value: "and", label: "AND (Conjunction)" },
-  { value: "or", label: "OR (Disjunction)" },
-  { value: "not", label: "NOT (Negation)" },
-];
-
-const VSM_MEASURE_OPTIONS: Array<{ value: SearchMeasure; label: string }> = [
-  { value: "cosine", label: "Cosine Similarity" },
-  { value: "inner_product", label: "Inner Product" },
-  { value: "euclidean_distance", label: "Euclidean Distance" },
-  { value: "dice", label: "Dice" },
-  { value: "jaccard", label: "Jaccard" },
-  { value: "overlap_coefficient", label: "Overlap Coefficient" },
-];
-
-const DEFAULT_MEASURE: SearchMeasure = "cosine";
-const DEFAULT_P = 2;
-
-function getModelLabel(model: SearchModel): string {
-  if (model === "boolean_exact") return "Boolean Exact";
-  if (model === "extended_boolean") return "Extended Boolean";
-  if (model === "fuzzy_zadeh") return "Fuzzy Zadeh";
-  if (model === "fuzzy_lukasiewicz") return "Fuzzy Lukasiewicz";
-  return "Vector Space Model";
+function supportsMeasure(model: SearchModel) {
+  return model === "vsm";
 }
 
-function formatSelection(model: SearchModel, measure: SearchMeasure, p: number, operator: LogicalOperator): string {
-  if (model === "boolean_exact") return `${getModelLabel(model)} / ${operator.toUpperCase()}`;
-  if (model === "extended_boolean") return `${getModelLabel(model)} / ${operator.toUpperCase()} / p=${p}`;
-  if (model === "fuzzy_zadeh" || model === "fuzzy_lukasiewicz") return `${getModelLabel(model)} / ${operator.toUpperCase()}`;
-  const measureLabel = VSM_MEASURE_OPTIONS.find((option) => option.value === measure)?.label || measure;
-  return `${getModelLabel(model)} / ${measureLabel}`;
+function supportsOperator(model: SearchModel) {
+  return ["boolean", "fuzzy", "lukasiewicz"].includes(model);
+}
+
+function supportsPNorm(model: SearchModel) {
+  return model === "extended_boolean";
+}
+
+function getModelLabel(model: SearchModel) {
+  switch (model) {
+    case "boolean":
+      return "Boolean";
+    case "vsm":
+      return "Vector Space Model";
+    case "extended_boolean":
+      return "Extended Boolean";
+    case "fuzzy":
+      return "Fuzzy";
+    case "lukasiewicz":
+      return "Lukasiewicz";
+    case "probabilistic":
+      return "BIR";
+    default:
+      return model;
+  }
 }
 
 export default function HomePage() {
+  const router = useRouter();
+  const [viewMode, setViewMode] = useState<"search" | "compare">("search");
   const [query, setQuery] = useState("");
-  const [searchModel, setSearchModel] = useState<SearchModel>("boolean_exact");
-  const [searchMeasure, setSearchMeasure] = useState<SearchMeasure>(DEFAULT_MEASURE);
-  const [searchP, setSearchP] = useState<number>(DEFAULT_P);
-  const [searchOperator, setSearchOperator] = useState<LogicalOperator>("or");
-  const [compareMode, setCompareMode] = useState(false);
-  const [modelA, setModelA] = useState<SearchModel>("boolean_exact");
-  const [measureA, setMeasureA] = useState<SearchMeasure>(DEFAULT_MEASURE);
-  const [pA, setPA] = useState<number>(DEFAULT_P);
-  const [operatorA, setOperatorA] = useState<LogicalOperator>("or");
-  const [modelB, setModelB] = useState<SearchModel>("extended_boolean");
-  const [measureB, setMeasureB] = useState<SearchMeasure>(DEFAULT_MEASURE);
-  const [pB, setPB] = useState<number>(DEFAULT_P);
-  const [operatorB, setOperatorB] = useState<LogicalOperator>("or");
-  const [primaryResults, setPrimaryResults] = useState<SearchResult[]>([]);
-  const [secondaryResults, setSecondaryResults] = useState<SearchResult[]>([]);
-  const [feedbackCount, setFeedbackCount] = useState(0);
-  const [uploading, setUploading] = useState(false);
-  const [searching, setSearching] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+  const [model, setModel] = useState<SearchModel>("vsm");
+  const [measure, setMeasure] = useState<VsmMeasure>("cosine");
+  const [operator, setOperator] = useState<LogicalOperator>("or");
+  const [p, setP] = useState(2);
+  const [compareLeft, setCompareLeft] = useState<Draft>({ ...DEFAULT_DRAFT, model: "vsm" });
+  const [compareRight, setCompareRight] = useState<Draft>({ ...DEFAULT_DRAFT, model: "probabilistic" });
 
-  useEffect(() => {
-    void refreshMetrics();
-  }, []);
-
-  const refreshMetrics = async () => {
-    try {
-      const metrics = await fetchMetrics();
-      setFeedbackCount(metrics.feedback_count ?? 0);
-    } catch {
-      setFeedbackCount(0);
-    }
+  const openCompareMode = () => {
+    const leftDraft = { query, model, measure, operator, p };
+    const rightModel: SearchModel = model === "vsm" ? "probabilistic" : "vsm";
+    const rightDraft: Draft = {
+      query,
+      model: rightModel,
+      measure: rightModel === "vsm" ? measure : "cosine",
+      operator,
+      p,
+    };
+    setCompareLeft(leftDraft);
+    setCompareRight(rightDraft);
+    setViewMode("compare");
   };
 
-  const updateSearchModel = (model: SearchModel) => {
-    setSearchModel(model);
-    setSearchMeasure(DEFAULT_MEASURE);
-    setSearchP(DEFAULT_P);
-    setSearchOperator("or");
-  };
+  const updateCompareLeft = (patch: Partial<Draft>) => setCompareLeft((current) => ({ ...current, ...patch }));
+  const updateCompareRight = (patch: Partial<Draft>) => setCompareRight((current) => ({ ...current, ...patch }));
 
-  const updateModelA = (model: SearchModel) => {
-    setModelA(model);
-    setMeasureA(DEFAULT_MEASURE);
-    setPA(DEFAULT_P);
-    setOperatorA("or");
-  };
-
-  const updateModelB = (model: SearchModel) => {
-    setModelB(model);
-    setMeasureB(DEFAULT_MEASURE);
-    setPB(DEFAULT_P);
-    setOperatorB("or");
-  };
-
-  const runSearch = async () => {
+  const runSearch = () => {
     if (!query.trim()) return;
-
-    setError(null);
-    setSuccess(null);
-    setSearching(true);
-    const submittedQuery = query.trim();
-
-    try {
-      if (compareMode) {
-        const comparison = await compareDocuments({
-          query: submittedQuery,
-          model_a: modelA,
-          measure_a: measureA,
-          tf_mode_a: "normalized",
-          p_a: pA,
-          operator_a: operatorA,
-          model_b: modelB,
-          measure_b: measureB,
-          tf_mode_b: "normalized",
-          p_b: pB,
-          operator_b: operatorB,
-          top_k: 10,
-        });
-        setPrimaryResults(comparison.model_a.results);
-        setSecondaryResults(comparison.model_b.results);
-      } else {
-        const results = await searchDocuments({
-          query: submittedQuery,
-          model: searchModel,
-          measure: searchMeasure,
-          tf_mode: "normalized",
-          p: searchP,
-          operator: searchOperator,
-          top_k: 10,
-        });
-        setPrimaryResults(results);
-        setSecondaryResults([]);
-      }
-
-      await refreshMetrics();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Search failed");
-    } finally {
-      setSearching(false);
-    }
+    const params = new URLSearchParams({ q: query.trim(), model, measure, operator, p: String(p) });
+    router.push(`/results?${params.toString()}`);
   };
 
-  const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files ?? []);
-    if (files.length === 0) return;
-
-    setUploading(true);
-    setError(null);
-    setSuccess(null);
-    try {
-      let lastCount = 0;
-      let lastFilename = "";
-      for (const file of files) {
-        const response = await uploadDocument(file);
-        lastCount = response?.document_count ?? lastCount;
-        lastFilename = response?.filename || file.name;
-        console.log("UPLOAD DEBUG:", { filename: lastFilename, index_success: true, document_count: lastCount });
-      }
-
-      if (files.length === 1) {
-        setSuccess(`Nouveau document ajouté et indexé avec succès : ${lastFilename || files[0].name} (total docs: ${lastCount || "?"})`);
-      } else {
-        setSuccess(`${files.length} nouveaux documents ajoutés et indexés avec succès (total docs: ${lastCount || "?"}).`);
-      }
-
-      if (query.trim()) {
-        await runSearch();
-      }
-    } catch (err) {
-      console.error("UPLOAD DEBUG:", { index_success: false, error: err });
-      setError(err instanceof Error ? err.message : "Upload failed");
-    } finally {
-      setUploading(false);
-      e.target.value = "";
-    }
+  const runCompare = () => {
+    if (!compareLeft.query.trim() || !compareRight.query.trim()) return;
+    const params = new URLSearchParams({
+      mode: "compare",
+      queryA: compareLeft.query.trim(),
+      modelA: compareLeft.model,
+      measureA: compareLeft.measure,
+      operatorA: compareLeft.operator,
+      pA: String(compareLeft.p),
+      queryB: compareRight.query.trim(),
+      modelB: compareRight.model,
+      measureB: compareRight.measure,
+      operatorB: compareRight.operator,
+      pB: String(compareRight.p),
+    });
+    router.push(`/results?${params.toString()}`);
   };
-
-  const activeModelLabel = compareMode
-    ? formatSelection(modelA, measureA, pA, operatorA)
-    : formatSelection(searchModel, searchMeasure, searchP, searchOperator);
-  const secondaryModelLabel = formatSelection(modelB, measureB, pB, operatorB);
 
   return (
-    <div className="space-y-8">
-      <section className="overflow-hidden rounded-[2rem] border border-black/10 bg-white/80 p-6 shadow-[0_18px_60px_rgba(17,17,17,0.08)] md:p-8">
-        <div className="mb-7 flex flex-col gap-4 md:mb-8 md:flex-row md:items-start md:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-black/50">Information retrieval workspace</p>
-            <h2 className="mt-2 text-2xl font-bold text-black md:text-3xl">Upload, select a model, query, and search</h2>
+    <div className="mx-auto max-w-6xl space-y-8">
+      <section className="space-y-5 rounded-2xl bg-[linear-gradient(135deg,rgba(11,18,32,0.96),rgba(17,24,39,0.9))] px-6 py-8 shadow-[0_24px_80px_rgba(0,0,0,0.32)] md:px-8 md:py-10">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="space-y-3">
+            <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#d4af37]">Projet academique RI</p>
+            <h1 className="max-w-3xl text-4xl font-black tracking-tight text-[#f9fafb] md:text-5xl">Moteur de Recherche</h1>
+            <p className="max-w-2xl text-base leading-7 text-[#cbd5e1]">
+              Index inverse partage, TF-IDF, modele booleen, p-norm, logique floue et BIR probabiliste implementes manuellement.
+            </p>
+          </div>
+          <div className="inline-flex rounded-full border border-white/10 bg-white/5 p-1 shadow-[0_12px_30px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+            <button
+              type="button"
+              onClick={() => setViewMode("search")}
+              className={
+                viewMode === "search"
+                  ? "rounded-full bg-[#d4af37] px-4 py-2 text-sm font-semibold text-[#0b1220] shadow-[0_0_18px_rgba(212,175,55,0.25)]"
+                  : "rounded-full px-4 py-2 text-sm font-semibold text-[#cbd5e1] transition hover:text-white"
+              }
+            >
+              Search Mode
+            </button>
+            <button
+              type="button"
+              onClick={openCompareMode}
+              className={
+                viewMode === "compare"
+                  ? "rounded-full bg-[#d4af37] px-4 py-2 text-sm font-semibold text-[#0b1220] shadow-[0_0_18px_rgba(212,175,55,0.25)]"
+                  : "rounded-full px-4 py-2 text-sm font-semibold text-[#cbd5e1] transition hover:text-white"
+              }
+            >
+              Compare Mode
+            </button>
           </div>
         </div>
+      </section>
 
-        <div className="space-y-6 md:space-y-7">
-          <label className="flex min-h-[210px] cursor-pointer flex-col items-center justify-center rounded-[1.75rem] border-2 border-dashed border-gold bg-white px-6 py-8 text-center transition hover:bg-[#fffdf8]">
-            <input type="file" multiple onChange={onFileChange} className="sr-only" />
-            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold">
-              <CloudUploadIcon />
+      {viewMode === "search" ? (
+        <>
+          <section className="space-y-5 rounded-2xl border border-[rgba(212,175,55,0.18)] bg-[#111827] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
+            <SearchBar query={query} setQuery={setQuery} onSearch={runSearch} />
+            <div className="grid gap-4 md:grid-cols-2">
+              <ModelSelector model={model} onChange={setModel} />
+              {supportsMeasure(model) && <MeasureSelector measure={measure} onChange={setMeasure} />}
+              {supportsOperator(model) && <LogicalOperatorSelector operator={operator} onChange={setOperator} />}
+              {supportsPNorm(model) && <PValueSlider value={p} onChange={setP} />}
             </div>
-            <p className="text-lg font-bold text-black">Glissez-déposez vos fichiers ici</p>
-            <p className="mt-2 text-sm text-black/55">ou cliquez pour parcourir (PDF, DOCX, XLSX, TXT)</p>
-            <div className="mt-6 self-start text-left">
-              <span className="sr-only">Choisir un fichier</span>
-              <span className="pointer-events-none block text-sm text-black/65">Choisir un fichier</span>
-              <span className="pointer-events-none block text-sm text-black/40">Aucun fichier choisi</span>
-            </div>
-          </label>
+          </section>
 
-          {uploading && <p className="text-sm font-medium text-gold">Uploading and indexing...</p>}
-          {success && <p className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">{success}</p>}
-
-          <div className="rounded-[1.5rem] border border-black/10 bg-[#fffdf8] p-4 md:p-5">
-            <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/45">Search mode</p>
-                <h3 className="mt-1 text-lg font-bold text-black">Select the model before searching</h3>
+          <section className="grid gap-4 md:grid-cols-3">
+            {[
+              ["Boolean", "Arbre d'expression AND / OR / NOT, RSV binaire."],
+              ["VSM", "Vecteurs TF-IDF et similarite cosinus."],
+              ["Fuzzy + BIR", "Appariement gradue et probabilite de pertinence."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-xl border border-[rgba(212,175,55,0.2)] border-t-4 border-t-[#d4af37] bg-[#111827] p-5 shadow-[0_16px_42px_rgba(0,0,0,0.24)] transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                <h2 className="font-bold text-[#f9fafb]">{title}</h2>
+                <p className="mt-2 text-sm leading-6 text-[#cbd5e1]">{text}</p>
               </div>
-              <label className="inline-flex items-center gap-2 text-sm font-medium text-black/70">
-                <input
-                  type="checkbox"
-                  checked={compareMode}
-                  onChange={(event) => setCompareMode(event.target.checked)}
-                  className="h-4 w-4 rounded border-black/20 text-black focus:ring-black"
-                />
-                Compare mode
-              </label>
+            ))}
+          </section>
+        </>
+      ) : (
+        <section className="space-y-6 rounded-2xl border border-[rgba(212,175,55,0.18)] bg-[#111827] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#d4af37]">Compare Mode</p>
+              <h2 className="mt-1 text-2xl font-black text-[#f9fafb]">Split the query across two models</h2>
+              <p className="mt-2 text-sm leading-6 text-[#cbd5e1]">Compare Model A and Model B with the same interface and one shared action button.</p>
             </div>
-
-            {compareMode ? (
-              <div className="grid gap-4 lg:grid-cols-2">
-                <ModelSelector
-                  title="Model A"
-                  model={modelA}
-                  measure={measureA}
-                  p={pA}
-                  operator={operatorA}
-                  onModelChange={updateModelA}
-                  onMeasureChange={setMeasureA}
-                  onPChange={setPA}
-                  onOperatorChange={setOperatorA}
-                />
-                <ModelSelector
-                  title="Model B"
-                  model={modelB}
-                  measure={measureB}
-                  p={pB}
-                  operator={operatorB}
-                  onModelChange={updateModelB}
-                  onMeasureChange={setMeasureB}
-                  onPChange={setPB}
-                  onOperatorChange={setOperatorB}
-                />
-              </div>
-            ) : (
-              <ModelSelector
-                title="Selected model"
-                model={searchModel}
-                measure={searchMeasure}
-                p={searchP}
-                operator={searchOperator}
-                onModelChange={updateSearchModel}
-                onMeasureChange={setSearchMeasure}
-                onPChange={setSearchP}
-                onOperatorChange={setSearchOperator}
-              />
-            )}
+            <button
+              type="button"
+              onClick={() => setViewMode("search")}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-[#cbd5e1] transition hover:border-[#d4af37] hover:text-[#f9fafb]"
+            >
+              Back to Search
+            </button>
           </div>
 
-          <SearchBar query={query} setQuery={setQuery} onSearch={runSearch} submitLabel={compareMode ? "Compare" : "Search"} />
+          <div className="grid gap-5 lg:grid-cols-2">
+            <CompareDraftCard title="Model A" draft={compareLeft} onChange={updateCompareLeft} />
+            <CompareDraftCard title="Model B" draft={compareRight} onChange={updateCompareRight} />
+          </div>
 
-          {searching && <p className="text-sm font-medium text-black/55">Searching...</p>}
-
-          {error && <p className="rounded-2xl border border-black/10 bg-[#fff8e8] px-4 py-3 text-sm text-black">{error}</p>}
-        </div>
-      </section>
-
-      <MetricsCard
-        feedback_count={feedbackCount}
-        currentMode={activeModelLabel}
-        compareMode={compareMode}
-        compareAgainst={compareMode ? secondaryModelLabel : undefined}
-      />
-
-      <section className={`grid gap-6 ${compareMode ? "md:grid-cols-2" : ""}`}>
-        <ResultsPanel title={compareMode ? `Model A · ${activeModelLabel}` : activeModelLabel} query={query} results={primaryResults} />
-        {compareMode && <ResultsPanel title={`Model B · ${secondaryModelLabel}`} query={query} results={secondaryResults} />}
-      </section>
-
-      <section className="flex flex-wrap gap-3 pb-2">
-        {keywords.map((keyword) => (
-          <span
-            key={keyword}
-            className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm text-black/80 shadow-[0_1px_0_rgba(17,17,17,0.02)]"
-          >
-            {keyword}
-          </span>
-        ))}
-      </section>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={runCompare}
+              className="rounded-full border border-[#d4af37] bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0b1220] shadow-[0_0_22px_rgba(212,175,55,0.25)] transition hover:border-[#f4d03f] hover:bg-[#f4d03f] hover:shadow-[0_0_28px_rgba(244,208,63,0.35)]"
+            >
+              Compare
+            </button>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
 
-type ModelSelectorProps = {
+function CompareDraftCard({
+  title,
+  draft,
+  onChange,
+}: {
   title: string;
-  model: SearchModel;
-  measure: SearchMeasure;
-  p: number;
-  operator: LogicalOperator;
-  onModelChange: (model: SearchModel) => void;
-  onMeasureChange: (measure: SearchMeasure) => void;
-  onPChange: (p: number) => void;
-  onOperatorChange: (operator: LogicalOperator) => void;
-};
-
-function ModelSelector({ title, model, measure, p, operator, onModelChange, onMeasureChange, onPChange, onOperatorChange }: ModelSelectorProps) {
+  draft: Draft;
+  onChange: (patch: Partial<Draft>) => void;
+}) {
   return (
-    <div className="rounded-2xl border border-black/10 bg-white p-4">
-      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-black/45">{title}</p>
-      <div className="mt-3 grid gap-3 md:grid-cols-2">
-        <SelectField label="Model" value={model} options={MODEL_OPTIONS} onChange={(value) => onModelChange(value as SearchModel)} />
-        {model === "vsm" ? (
-          <SelectField label="Measure" value={measure} options={VSM_MEASURE_OPTIONS} onChange={(value) => onMeasureChange(value as SearchMeasure)} />
-        ) : (
-          <SelectField label="Logical Operator" value={operator} options={OPERATOR_OPTIONS} onChange={(value) => onOperatorChange(value as LogicalOperator)} />
-        )}
-        {model === "extended_boolean" ? <NumberField label="p" value={p} onChange={onPChange} /> : null}
+    <section className="rounded-xl border border-[rgba(212,175,55,0.18)] border-t-4 border-t-[#d4af37] bg-[#111827] p-5 shadow-[0_18px_42px_rgba(0,0,0,0.26)] transition hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(0,0,0,0.34)]">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div>
+          <h3 className="text-lg font-bold text-[#f9fafb]">{title}</h3>
+          <p className="text-sm text-[#cbd5e1]">{getModelLabel(draft.model)}</p>
+        </div>
+        <span className="rounded-full border border-[#d4af37]/25 bg-[#0b1220] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#f9fafb]">
+          {title}
+        </span>
       </div>
-    </div>
-  );
-}
 
-type SelectFieldProps = {
-  label: string;
-  value: string;
-  options: Array<{ value: string; label: string }>;
-  onChange: (value: string) => void;
-};
-
-function SelectField({ label, value, options, onChange }: SelectFieldProps) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-sm font-medium text-black/65">{label}</span>
-      <select
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-2xl border border-black/10 bg-[#fffdf8] px-4 py-3 text-sm text-black outline-none transition focus:border-gold"
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-}
-
-function NumberField({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-sm font-medium text-black/65">{label}</span>
-      <input
-        type="number"
-        min="1"
-        step="1"
-        value={value}
-        onChange={(event) => onChange(Number(event.target.value) || DEFAULT_P)}
-        className="w-full rounded-2xl border border-black/10 bg-[#fffdf8] px-4 py-3 text-sm text-black outline-none transition focus:border-gold"
-      />
-    </label>
-  );
-}
-
-function CloudUploadIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-7 w-7 fill-none stroke-current stroke-[1.8]">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M7 18a4 4 0 0 1-.67-7.94A5.5 5.5 0 0 1 17.9 8.4 3.75 3.75 0 1 1 18 18H7Z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 12v8m0-8 3 3m-3-3-3 3" />
-    </svg>
+      <div className="space-y-4">
+        <SearchBar
+          query={draft.query}
+          setQuery={(value) => onChange({ query: value })}
+          onSearch={() => undefined}
+          hideSubmitButton
+        />
+        <div className="grid gap-4">
+          <ModelSelector model={draft.model} onChange={(model) => onChange({ model })} />
+          {supportsMeasure(draft.model) && (
+            <MeasureSelector measure={draft.measure} onChange={(measure) => onChange({ measure })} />
+          )}
+          {supportsOperator(draft.model) && (
+            <LogicalOperatorSelector operator={draft.operator} onChange={(operator) => onChange({ operator })} />
+          )}
+          {supportsPNorm(draft.model) && <PValueSlider value={draft.p} onChange={(p) => onChange({ p })} />}
+        </div>
+      </div>
+    </section>
   );
 }

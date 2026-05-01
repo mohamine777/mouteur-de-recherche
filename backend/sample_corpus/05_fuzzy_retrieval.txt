@@ -1,0 +1,1 @@
+Fuzzy retrieval uses membership degrees between zero and one. Zadeh operators compute conjunction with minimum, disjunction with maximum, and negation with one minus the membership value.

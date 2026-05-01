@@ -1,0 +1,1 @@
+Information retrieval systems are evaluated with precision, recall, MAP and nDCG. A ranked result list is useful when users inspect only the first documents returned by the search engine.

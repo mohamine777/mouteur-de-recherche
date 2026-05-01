@@ -1,194 +1,114 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
-export type SearchModel = "boolean_exact" | "extended_boolean" | "fuzzy_zadeh" | "fuzzy_lukasiewicz" | "vsm";
-export type SearchMeasure = "cosine" | "inner_product" | "euclidean_distance" | "dice" | "jaccard" | "overlap_coefficient";
+export type SearchModel =
+  | "boolean"
+  | "vsm"
+  | "extended_boolean"
+  | "fuzzy"
+  | "zadeh"
+  | "lukasiewicz"
+  | "probabilistic"
+  | "bir";
+export type VsmMeasure = "cosine" | "product" | "euclidean" | "dice" | "jaccard" | "overlap";
 export type LogicalOperator = "and" | "or" | "not";
 
 export type SearchResult = {
   doc_id: string;
+  title: string;
   score: number;
-  metadata: Record<string, string>;
   snippet: string;
-};
-
-export type CompareModelsResponse = {
-  best_model: "vsm" | "ebm" | "Tie";
-  reason: string;
-  metrics: {
-    vsm: {
-      precision: number;
-      recall: number;
-      f1: number;
-      map: number;
-      ndcg: number;
-    };
-    ebm: {
-      precision: number;
-      recall: number;
-      f1: number;
-      map: number;
-      ndcg: number;
-    };
-  };
-};
-
-export type SearchResponsePayload = {
-  query: string;
   model: SearchModel;
-  measure: SearchMeasure;
-  tf_mode?: "normalized" | "raw";
-  p?: number;
-  operator?: LogicalOperator;
-  top_k?: number;
+  metadata: Record<string, string>;
 };
 
-export type CompareResponse = {
-  model_a: {
-    model: SearchModel;
-    measure: SearchMeasure;
-    results: SearchResult[];
-  };
-  model_b: {
-    model: SearchModel;
-    measure: SearchMeasure;
-    results: SearchResult[];
-  };
+export type CorpusStats = {
+  documents: number;
+  terms: number;
+  index_size: number;
+  top_terms: Array<{ term: string; tf: number; df: number; idf: number }>;
+};
+
+export type DocumentRecord = {
+  doc_id: string;
+  title: string;
+  metadata: Record<string, string>;
+  token_count: number;
+  indexed: boolean;
+  size: number;
+  upload_date: string;
+  preview_snippet: string;
 };
 
 async function request(path: string, init?: RequestInit) {
-  try {
-    const res = await fetch(`${API_BASE}${path}`, init);
-    if (!res.ok) {
-      let detail = `${res.status} ${res.statusText}`;
-      try {
-        const body = await res.json();
-        detail = body?.error || body?.detail || detail;
-      } catch {
-        // Ignore non-JSON error bodies.
-      }
-      throw new Error(detail);
-    }
-    return res;
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
-        throw new Error(`Cannot reach backend at ${API_BASE}: ${error.message}`);
-      }
-      throw error;
-    }
-    throw new Error(`Cannot reach backend at ${API_BASE}`);
+  const response = await fetch(`${API_BASE}${path}`, init);
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    throw new Error(body?.detail || body?.error || `${response.status} ${response.statusText}`);
   }
+  return response;
 }
 
-export async function uploadDocument(file: File) {
+export async function searchDocuments(payload: {
+  query: string;
+  model: SearchModel;
+  measure?: VsmMeasure;
+  operator?: LogicalOperator;
+  p?: number;
+  top_k?: number;
+}): Promise<SearchResult[]> {
+  const response = await request("/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  return response.json();
+}
+
+export async function uploadDocuments(files: File[], clear = false) {
   const formData = new FormData();
-  formData.append("file", file);
-
-  console.log("UPLOAD DEBUG:", { filename: file.name, request_sent: true });
-
-  const res = await fetch(`${API_BASE}/documents/upload`, {
+  files.forEach((file) => formData.append("files", file));
+  const response = await request(`/index?clear=${clear ? "true" : "false"}`, {
     method: "POST",
     body: formData,
   });
-
-  const body = await res.json().catch(() => null);
-  console.log("UPLOAD DEBUG:", {
-    filename: file.name,
-    response_status: res.status,
-    response_body: body,
-  });
-
-  if (!res.ok) {
-    const message = body?.error || body?.detail || `${res.status} ${res.statusText}`;
-    throw new Error(message);
-  }
-
-  return body;
+  return response.json();
 }
 
-export async function searchVSM(query: string, top_k = 10): Promise<SearchResult[]> {
-  const res = await request("/search/vsm", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query, top_k }),
-  });
-
-  return res.json();
+export async function uploadDocument(file: File) {
+  return uploadDocuments([file], false);
 }
 
-export async function searchBoolean(
-  query: string,
-  operator: "and" | "or" | "not" = "or",
-  top_k = 10,
-): Promise<SearchResult[]> {
-  const res = await request("/search/boolean", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query, operator, top_k }),
-  });
-
-  return res.json();
+export async function fetchStats(): Promise<CorpusStats> {
+  const response = await request("/stats", { cache: "no-store" });
+  return response.json();
 }
 
-export async function searchDocuments(payload: SearchResponsePayload): Promise<SearchResult[]> {
-  const res = await request("/search", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  return res.json();
-}
-
-export async function submitFeedback(query: string, doc_id: string, relevant: boolean) {
-  await request("/feedback", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query, doc_id, relevant }),
-  });
-}
-
-export async function fetchMetrics() {
-  const res = await request("/metrics");
-  return res.json();
+export async function fetchSuggestions(query: string): Promise<string[]> {
+  const params = new URLSearchParams({ q: query, limit: "8" });
+  const response = await request(`/suggest?${params.toString()}`, { cache: "no-store" });
+  return response.json();
 }
 
 export async function fetchDocuments() {
-  const res = await request("/documents");
-  return res.json();
+  const response = await request("/documents", { cache: "no-store" });
+  return response.json();
 }
 
-export async function deleteDocument(doc_id: string) {
-  await request(`/documents/${doc_id}`, {
-    method: "DELETE",
-  });
+export async function fetchDocument(docId: string) {
+  const response = await request(`/documents/${docId}`, { cache: "no-store" });
+  return response.json();
 }
 
-export async function compareModels(query: string): Promise<CompareModelsResponse> {
-  const params = new URLSearchParams({ query });
-  const res = await request(`/compare-models?${params.toString()}`);
-  return res.json();
+export async function deleteDocument(docId: string) {
+  const response = await request(`/documents/${docId}`, { method: "DELETE" });
+  return response.json();
 }
 
-export async function compareDocuments(payload: {
-  query: string;
-  model_a: SearchModel;
-  measure_a: SearchMeasure;
-  tf_mode_a?: "normalized" | "raw";
-  p_a?: number;
-  operator_a?: LogicalOperator;
-  model_b: SearchModel;
-  measure_b: SearchMeasure;
-  tf_mode_b?: "normalized" | "raw";
-  p_b?: number;
-  operator_b?: LogicalOperator;
-  top_k?: number;
-}): Promise<CompareResponse> {
-  const res = await request("/compare", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+export async function reindexDocument(docId: string) {
+  const response = await request(`/documents/${docId}/reindex`, { method: "POST" });
+  return response.json();
+}
 
-  return res.json();
+export async function submitFeedback(_query: string, _docId: string, _relevant: boolean) {
+  return { success: true };
 }

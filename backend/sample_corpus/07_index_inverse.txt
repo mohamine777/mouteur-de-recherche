@@ -1,0 +1,1 @@
+Un index inverse associe chaque terme a une liste de documents et de frequences. Cette structure accelere la recherche car le systeme consulte seulement les listes de postings utiles a la requete.

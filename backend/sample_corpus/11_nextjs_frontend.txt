@@ -1,0 +1,1 @@
+Next.js with the App Router provides an interactive frontend for query submission, upload pages, result cards, model selection and a statistics dashboard for the corpus.

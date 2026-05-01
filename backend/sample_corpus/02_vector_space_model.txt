@@ -1,0 +1,1 @@
+The vector space model represents documents and queries as weighted term vectors. TF-IDF weighting gives high importance to terms that are frequent in one document and rare in the corpus. Cosine similarity ranks documents by angle.

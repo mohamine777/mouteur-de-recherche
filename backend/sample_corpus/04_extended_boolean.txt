@@ -1,0 +1,1 @@
+Extended Boolean retrieval combines logical query structure with graded term weights. The p-norm formula ranks documents for AND and OR queries. With p equals two, the model uses an Euclidean interpretation.

@@ -1,0 +1,1 @@
+Le pretraitement transforme le texte brut en termes d'indexation. Il inclut la tokenisation, la mise en minuscules, la suppression des mots vides et la racinisation pour le francais et l'anglais.

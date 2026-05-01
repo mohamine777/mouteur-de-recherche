@@ -1,0 +1,1 @@
+Le modele booleen represente chaque document comme un ensemble de termes. Une requete utilise AND, OR et NOT. Le resultat est exact: un document satisfait la requete ou ne la satisfait pas.

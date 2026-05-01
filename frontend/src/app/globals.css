@@ -3,22 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --bg: #ffffff;
-  --panel: #ffffff;
-  --text: #111111;
+  --app-bg: #0b1220;
+  --app-text: #f9fafb;
+  --app-muted: #cbd5e1;
+  --app-navy: #0b1220;
+  --app-slate: #111827;
+  --app-gold: #d4af37;
+  --app-gold-hover: #f4d03f;
+  --app-border: rgba(212, 175, 55, 0.25);
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.16), transparent 26%),
+    radial-gradient(circle at top right, rgba(15, 23, 42, 0.58), transparent 28%),
+    radial-gradient(circle at bottom, rgba(30, 41, 59, 0.5), transparent 24%),
+    var(--app-bg);
 }
 
 body {
-  background:
-    radial-gradient(circle at top left, #f5ebd2 0%, transparent 38%),
-    radial-gradient(circle at bottom right, #e8d9b5 0%, transparent 42%),
-    var(--bg);
-  color: var(--text);
+  background: transparent;
+  color: var(--app-text);
+  min-height: 100vh;
+  font-feature-settings: "ss01" 1, "ss02" 1;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.28);
+  color: var(--app-navy);
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition: all 0.25s ease;
 }
 
 mark {
-  background: #e8d9b5;
-  color: #111111;
+  background: rgba(212, 175, 55, 0.28);
+  color: var(--app-navy);
   padding: 0 2px;
   border-radius: 4px;
 }

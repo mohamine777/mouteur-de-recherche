@@ -1,0 +1,1 @@
+La recherche d'information etudie les methodes permettant de representer, indexer et retrouver des documents pertinents. Un moteur de recherche construit un index inverse, analyse la requete et calcule un score RSV pour chaque document.

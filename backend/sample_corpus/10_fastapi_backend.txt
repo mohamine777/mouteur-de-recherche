@@ -1,0 +1,1 @@
+FastAPI exposes indexing and search endpoints for the academic search engine. The backend stores metadata, original document text, snippets and mathematical scores for each retrieval model.

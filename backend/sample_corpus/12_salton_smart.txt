@@ -1,0 +1,1 @@
+Gerard Salton's SMART system popularized automatic text processing and vector space retrieval. Term weighting and cosine ranking became central ideas in classical search engine architecture.

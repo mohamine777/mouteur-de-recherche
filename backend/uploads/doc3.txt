@@ -1,0 +1,3 @@
+Search engines rank documents according to relevance scores.
+Information retrieval models compare queries and documents using ranking functions.
+Some systems combine semantic matching with logical filtering.
