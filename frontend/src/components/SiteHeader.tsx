@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/upload", label: "Upload" },
   { href: "/documents", label: "Documents" },
   { href: "/stats", label: "Stats" },
+  { href: "/evaluation", label: "Evaluation" },
 ];
 
 export default function SiteHeader() {

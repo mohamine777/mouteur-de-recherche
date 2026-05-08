@@ -7,8 +7,7 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 from uuid import uuid4
 
-from PyPDF2 import PdfReader
-
+from parsers.document_parser import DocumentParser
 from utils.index_store import JsonIndexStore
 from utils.preprocessing import TextPreprocessor
 
@@ -20,6 +19,7 @@ class Indexer:
 
     def __init__(self, store_path: Path | None = None) -> None:
         self.preprocessor = TextPreprocessor()
+        self.parser = DocumentParser()
         self.store = JsonIndexStore(store_path or Path("data/index.json"))
         self.documents: Dict[str, Dict] = {}
         self.inverted_index: Dict[str, Dict[str, int]] = defaultdict(dict)
@@ -39,18 +39,20 @@ class Indexer:
             self.clear()
         doc_ids = []
         for path in paths:
-            if path.suffix.lower() not in {".txt", ".pdf"}:
+            if path.suffix.lower() not in self.parser.SUPPORTED:
                 continue
-            text = self.extract_text(path)
+            text, parsed_metadata = self.parser.parse(path)
             if not text.strip():
                 continue
-            doc_ids.append(self.add_document(text=text, metadata={
+            metadata = {
                 "title": path.stem.replace("_", " ").title(),
                 "path": str(path),
                 "filename": path.name,
                 "date": datetime.fromtimestamp(path.stat().st_mtime).isoformat(timespec="seconds"),
                 "extension": path.suffix.lower(),
-            }))
+            }
+            metadata.update(parsed_metadata)
+            doc_ids.append(self.add_document(text=text, metadata=metadata))
         self.recompute()
         self.save()
         return doc_ids
@@ -151,12 +153,9 @@ class Indexer:
         self.tfidf_matrix = payload.get("tfidf_matrix", {})
         return True
 
-    @staticmethod
-    def extract_text(path: Path) -> str:
-        if path.suffix.lower() == ".pdf":
-            reader = PdfReader(str(path))
-            return "\n".join(page.extract_text() or "" for page in reader.pages)
-        return path.read_text(encoding="utf-8", errors="ignore")
+    def extract_text(self, path: Path) -> str:
+        text, _metadata = self.parser.parse(path)
+        return text
 
     @staticmethod
     def vector_norm(vector: Dict[str, float]) -> float:

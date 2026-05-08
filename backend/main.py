@@ -4,18 +4,21 @@ import re
 import shutil
 from datetime import datetime
 from pathlib import Path
-from typing import List, Literal
+from typing import Dict, List, Literal
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
+from analytics import QueryAnalyzer
+from evaluation import IREvaluator
 from indexer import Indexer
 from models.boolean_model import BooleanModel
 from models.extended_boolean import ExtendedBooleanModel
 from models.fuzzy_model import FuzzyBooleanModel
 from models.probabilistic import ProbabilisticBIRModel
 from models.vsm_model import VectorSpaceModel
+from parsers.document_parser import DocumentParser
 
 BASE_DIR = Path(__file__).resolve().parent
 UPLOAD_DIR = BASE_DIR / "uploads"
@@ -37,6 +40,8 @@ vsm_model = VectorSpaceModel(indexer)
 extended_boolean_model = ExtendedBooleanModel(indexer)
 fuzzy_model = FuzzyBooleanModel(indexer)
 probabilistic_model = ProbabilisticBIRModel(indexer)
+SUPPORTED_UPLOAD_EXTENSIONS = DocumentParser.SUPPORTED
+last_feedback_metrics = {"feedback_count": 0, "precision": 0, "recall": 0, "f1": 0}
 
 
 class SearchRequest(BaseModel):
@@ -46,6 +51,24 @@ class SearchRequest(BaseModel):
     operator: Literal["and", "or", "not"] = "or"
     p: float = 2.0
     top_k: int = 10
+
+
+class FeedbackSearchRequest(BaseModel):
+    query: str
+    relevant_doc_ids: List[str] = []
+    non_relevant_doc_ids: List[str] = []
+    top_k: int = 10
+
+
+class EvaluationRequest(BaseModel):
+    ground_truth: Dict[str, List[str]]
+    models: List[Literal["boolean", "extended_boolean", "vsm", "bir", "probabilistic", "zadeh", "fuzzy", "lukasiewicz", "fuzzy_lukasiewicz"]] = Field(
+        default_factory=lambda: ["boolean", "extended_boolean", "vsm", "bir", "zadeh", "lukasiewicz"]
+    )
+    top_k: int = 10
+    measure: Literal["cosine", "product", "inner_product", "euclidean", "euclidean_distance", "dice", "jaccard", "overlap", "overlap_coefficient"] = "cosine"
+    operator: Literal["and", "or", "not"] = "or"
+    p: float = 2.0
 
 
 class IndexResponse(BaseModel):
@@ -73,8 +96,9 @@ async def index_documents(files: List[UploadFile] = File(...), clear: bool = Fal
     paths = []
     for file in files:
         safe_name = Path(file.filename or "document.txt").name
-        if Path(safe_name).suffix.lower() not in {".txt", ".pdf"}:
-            raise HTTPException(status_code=400, detail="Only .txt and .pdf files are supported by /index")
+        if Path(safe_name).suffix.lower() not in SUPPORTED_UPLOAD_EXTENSIONS:
+            supported = ", ".join(sorted(SUPPORTED_UPLOAD_EXTENSIONS))
+            raise HTTPException(status_code=400, detail=f"Supported files: {supported}")
         target = UPLOAD_DIR / safe_name
         with target.open("wb") as handle:
             shutil.copyfileobj(file.file, handle)
@@ -112,6 +136,60 @@ def search(payload: SearchRequest) -> List[dict]:
     else:
         raise HTTPException(status_code=400, detail="Unknown model")
     return [_format_result(result, payload.query, model) for result in results[: payload.top_k]]
+
+
+@app.post("/search/feedback")
+def search_with_feedback(payload: FeedbackSearchRequest) -> List[dict]:
+    global last_feedback_metrics
+    results = probabilistic_model.search(
+        payload.query,
+        relevant_doc_ids=payload.relevant_doc_ids,
+        non_relevant_doc_ids=payload.non_relevant_doc_ids,
+    )
+    formatted_results = [_format_result(result, payload.query, "probabilistic") for result in results[: payload.top_k]]
+    last_feedback_metrics = _calculate_ir_metrics(
+        [result["doc_id"] for result in formatted_results],
+        payload.relevant_doc_ids,
+        payload.non_relevant_doc_ids,
+    )
+    return formatted_results
+
+
+@app.post("/evaluation")
+def evaluate_models(payload: EvaluationRequest) -> dict:
+    model_runners = {
+        "boolean": lambda query: boolean_model.search(_normalize_query_for_structured_models(query, "boolean", payload.operator)),
+        "extended_boolean": lambda query: extended_boolean_model.search(
+            _normalize_query_for_structured_models(query, "extended_boolean", payload.operator),
+            p=payload.p,
+        ),
+        "vsm": lambda query: vsm_model.search(query, measure=payload.measure),
+        "bir": probabilistic_model.search,
+        "zadeh": lambda query: fuzzy_model.search(_normalize_query_for_structured_models(query, "zadeh", payload.operator), lukasiewicz_or=False),
+        "lukasiewicz": lambda query: fuzzy_model.search(
+            _normalize_query_for_structured_models(query, "lukasiewicz", payload.operator),
+            lukasiewicz_or=True,
+        ),
+    }
+    evaluator = IREvaluator(
+        model_runners,
+        known_doc_ids=set(indexer.documents.keys()),
+    )
+    try:
+        result = evaluator.evaluate_batch(payload.ground_truth, models=payload.models, top_k=payload.top_k)
+        analyzer = QueryAnalyzer(indexer)
+        analyses = []
+        for query_row in result["per_query"]:
+            per_model_metrics = {
+                model: query_row[model]
+                for model in result["models"]
+                if model in query_row
+            }
+            analyses.append(analyzer.analyze(query_row["query"], per_model_metrics))
+        result["query_analysis"] = analyses
+        return result
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @app.get("/documents")
@@ -181,14 +259,52 @@ def stats() -> dict:
     }
 
 
+@app.get("/stats/tfidf")
+def tfidf_stats(doc_ids: str = "") -> dict:
+    requested = [doc_id.strip() for doc_id in doc_ids.split(",") if doc_id.strip()]
+    selected_doc_ids = requested or list(indexer.documents.keys())
+    documents = []
+    for doc_id in selected_doc_ids:
+        doc = indexer.documents.get(doc_id)
+        if not doc:
+            raise HTTPException(status_code=404, detail=f"Document not found: {doc_id}")
+        rows = _document_tfidf_rows(doc_id)
+        documents.append({
+            "doc_id": doc_id,
+            "title": doc["title"],
+            "metadata": doc["metadata"],
+            "terms": rows,
+        })
+    return {"documents": documents}
+
+
+@app.get("/stats/term-tfidf")
+def term_tfidf_stats(term: str, doc_ids: str = "") -> dict:
+    normalized_terms = indexer.preprocessor.preprocess(term)
+    normalized_term = normalized_terms[0] if normalized_terms else term.lower().strip()
+    requested = [doc_id.strip() for doc_id in doc_ids.split(",") if doc_id.strip()]
+    selected_doc_ids = requested or list(indexer.documents.keys())
+    idf = indexer.idf(normalized_term)
+    documents = []
+    for doc_id in selected_doc_ids:
+        if doc_id not in indexer.documents:
+            raise HTTPException(status_code=404, detail=f"Document not found: {doc_id}")
+        tf = int(indexer.doc_term_freqs.get(doc_id, {}).get(normalized_term, 0))
+        tfidf = float(tf) * idf
+        print(f"[TERM TFIDF DEBUG] term={normalized_term} doc={doc_id} tf={tf} idf={idf:.6f} tfidf={tfidf:.6f}")
+        documents.append({
+            "doc_id": doc_id,
+            "tf": tf,
+            "tfidf": round(tfidf, 6),
+        })
+    return {"term": normalized_term, "idf": round(idf, 6), "documents": documents}
+
+
 @app.get("/metrics")
 def metrics() -> dict:
     corpus_stats = stats()
     return {
-        "feedback_count": 0,
-        "precision": 0,
-        "recall": 0,
-        "f1": 0,
+        **last_feedback_metrics,
         **corpus_stats,
     }
 
@@ -201,6 +317,39 @@ def suggest(q: str = "", limit: int = 8) -> List[str]:
         return [item["term"] for item in indexer.top_terms(limit)]
     matches = [term for term in indexer.vocabulary if term.startswith(prefix)]
     return matches[:limit]
+
+
+def _document_tfidf_rows(doc_id: str) -> List[dict]:
+    freqs = indexer.doc_term_freqs.get(doc_id, {})
+    rows = []
+    for term, tf in sorted(freqs.items(), key=lambda item: (-item[1], item[0])):
+        idf = indexer.idf(term)
+        tfidf = float(tf) * idf
+        print(f"[TFIDF DEBUG] doc={doc_id} term={term} tf={tf} idf={idf:.6f} tfidf={tfidf:.6f}")
+        rows.append({
+            "term": term,
+            "tf": int(tf),
+            "idf": round(idf, 6),
+            "tfidf": round(tfidf, 6),
+        })
+    return rows
+
+
+def _calculate_ir_metrics(retrieved_doc_ids: List[str], relevant_doc_ids: List[str], non_relevant_doc_ids: List[str]) -> dict:
+    retrieved = set(retrieved_doc_ids)
+    relevant = set(relevant_doc_ids)
+    tp = len(retrieved & relevant)
+    fp = len(retrieved - relevant)
+    fn = len(relevant - retrieved)
+    precision = tp / (tp + fp) if tp + fp else 0
+    recall = tp / (tp + fn) if tp + fn else 0
+    f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0
+    return {
+        "feedback_count": len(relevant_doc_ids) + len(non_relevant_doc_ids),
+        "precision": round(precision, 6),
+        "recall": round(recall, 6),
+        "f1": round(f1, 6),
+    }
 
 
 def _normalize_query_for_structured_models(query: str, model: str, operator: str = "or") -> str:

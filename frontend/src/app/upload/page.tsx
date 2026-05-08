@@ -41,12 +41,12 @@ export default function UploadPage() {
         <input
           type="file"
           multiple
-          accept=".txt,.pdf"
+          accept=".txt,.pdf,.docx,.csv,.json,.html,.htm,.md,.xlsx"
           className="sr-only"
           onChange={(event) => setFiles(Array.from(event.target.files || []))}
         />
         <UploadIcon />
-        <p className="mt-4 text-lg font-bold text-[#f9fafb]">Deposez des fichiers .txt ou .pdf</p>
+        <p className="mt-4 text-lg font-bold text-[#f9fafb]">Deposez des fichiers PDF, TXT, DOCX, CSV, JSON, HTML, MD ou XLSX</p>
         <p className="mt-2 text-sm text-[#cbd5e1]">{files.length ? files.map((file) => file.name).join(", ") : "Cliquez pour parcourir"}</p>
       </label>
       <div className="flex flex-wrap gap-3">

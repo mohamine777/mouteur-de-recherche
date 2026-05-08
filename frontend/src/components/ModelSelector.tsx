@@ -8,7 +8,7 @@ const MODELS: Array<{ value: SearchModel; label: string }> = [
   { value: "extended_boolean", label: "Extended Boolean p-norm" },
   { value: "fuzzy", label: "Fuzzy" },
   { value: "lukasiewicz", label: "Lukasiewicz" },
-  { value: "probabilistic", label: "BIR" },
+  { value: "probabilistic", label: "Probabiliste (BIR)" },
 ];
 
 export default function ModelSelector({

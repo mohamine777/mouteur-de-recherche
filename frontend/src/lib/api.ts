@@ -28,6 +28,19 @@ export type CorpusStats = {
   top_terms: Array<{ term: string; tf: number; df: number; idf: number }>;
 };
 
+export type DocumentTfidfStats = {
+  doc_id: string;
+  title: string;
+  metadata: Record<string, string>;
+  terms: Array<{ term: string; tf: number; idf: number; tfidf: number }>;
+};
+
+export type TermTfidfStats = {
+  term: string;
+  idf: number;
+  documents: Array<{ doc_id: string; tf: number; tfidf: number }>;
+};
+
 export type DocumentRecord = {
   doc_id: string;
   title: string;
@@ -37,6 +50,70 @@ export type DocumentRecord = {
   size: number;
   upload_date: string;
   preview_snippet: string;
+};
+
+export type EvaluationModel = "boolean" | "extended_boolean" | "vsm" | "bir" | "probabilistic" | "zadeh" | "fuzzy" | "lukasiewicz" | "fuzzy_lukasiewicz";
+
+export type EvaluationMetrics = {
+  precision: number;
+  recall: number;
+  f1: number;
+  precision_at_1: number;
+  precision_at_5: number;
+  precision_at_10: number;
+  average_precision: number;
+  reciprocal_rank: number;
+  tp: number;
+  fp: number;
+  fn: number;
+  tn: number;
+  retrieved_doc_ids: string[];
+};
+
+export type EvaluationResponse = {
+  top_k: number;
+  models: EvaluationModel[];
+  per_query: Array<{
+    query: string;
+    relevant_doc_ids: string[];
+  } & Partial<Record<EvaluationModel, EvaluationMetrics>>>;
+  summary: Record<
+    string,
+    {
+      average_precision: number;
+      average_recall: number;
+      average_f1: number;
+      precision_at_1: number;
+      precision_at_5: number;
+      precision_at_10: number;
+      map: number;
+      mrr: number;
+      weighted_score: number;
+    }
+  >;
+  ranking: Array<{
+    model: EvaluationModel;
+    average_precision: number;
+    average_recall: number;
+    average_f1: number;
+    precision_at_1: number;
+    precision_at_5: number;
+    precision_at_10: number;
+    map: number;
+    mrr: number;
+    weighted_score: number;
+  }>;
+  query_analysis: Array<{
+    query: string;
+    terms: string[];
+    term_count: number;
+    matched_documents: number;
+    matched_doc_ids: string[];
+    sparsity: number;
+    difficulty_score: number;
+    difficulty: "easy" | "medium" | "hard";
+    recommended_model: EvaluationModel;
+  }>;
 };
 
 async function request(path: string, init?: RequestInit) {
@@ -83,6 +160,21 @@ export async function fetchStats(): Promise<CorpusStats> {
   return response.json();
 }
 
+export async function fetchTfidfStats(docIds: string[]): Promise<{ documents: DocumentTfidfStats[] }> {
+  const params = new URLSearchParams();
+  if (docIds.length) params.set("doc_ids", docIds.join(","));
+  const suffix = params.toString() ? `?${params.toString()}` : "";
+  const response = await request(`/stats/tfidf${suffix}`, { cache: "no-store" });
+  return response.json();
+}
+
+export async function fetchTermTfidfStats(term: string, docIds: string[]): Promise<TermTfidfStats> {
+  const params = new URLSearchParams({ term });
+  if (docIds.length) params.set("doc_ids", docIds.join(","));
+  const response = await request(`/stats/term-tfidf?${params.toString()}`, { cache: "no-store" });
+  return response.json();
+}
+
 export async function fetchSuggestions(query: string): Promise<string[]> {
   const params = new URLSearchParams({ q: query, limit: "8" });
   const response = await request(`/suggest?${params.toString()}`, { cache: "no-store" });
@@ -91,6 +183,22 @@ export async function fetchSuggestions(query: string): Promise<string[]> {
 
 export async function fetchDocuments() {
   const response = await request("/documents", { cache: "no-store" });
+  return response.json();
+}
+
+export async function evaluateModels(payload: {
+  ground_truth: Record<string, string[]>;
+  models?: EvaluationModel[];
+  top_k?: number;
+  measure?: VsmMeasure;
+  operator?: LogicalOperator;
+  p?: number;
+}): Promise<EvaluationResponse> {
+  const response = await request("/evaluation", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
   return response.json();
 }
 
